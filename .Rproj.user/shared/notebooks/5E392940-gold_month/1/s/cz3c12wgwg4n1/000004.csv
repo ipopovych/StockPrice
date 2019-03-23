@@ -1,0 +1,49 @@
+"0","```r
+cat(\"\nmean price span: \", min(pricespread))
+```"
+"1","
+mean price span:  0.620001
+"
+"0","```r
+cat(\"\nmax price span: \",  max(pricespread))
+```"
+"1","
+max price span:  10.28001
+"
+"0","```r
+cat(\"\nmean difference: \", mean(difference))
+```"
+"1","
+mean difference:  1.727917
+"
+"0","```r
+cat(\"\nmean difference normalized: \",  mean(normdifferece))
+```"
+"1","
+mean difference normalized:  0.5515786
+"
+"0","```r
+cat(\"\n\")
+```"
+"0","```r
+mean <- mean(normdifferece)
+variance <- var(normdifferece)
+median(normdifferece)
+```"
+"1","[1] 0.5419011
+"
+"0","```r
+mean
+```"
+"1","[1] 0.5515786
+"
+"0","```r
+variance
+```"
+"1","[1] 0.06828314
+"
+"0","```r
+sum(normdifferece)/length(normdifferece)
+```"
+"1","[1] 0.5515786
+"

@@ -1,0 +1,124 @@
+---
+title: "GoldenRuleMonth"
+output: html_notebook
+---
+
+
+```{r}
+library(ggthemes)
+library(data.table)
+library(quantmod)
+library(ggplot2)
+start <- as.Date('2008-01-01')
+end <- as.Date('2019-01-01')
+
+getSymbols("MSFT", src = "yahoo", from = start, to = end)
+#print(SNAP['2017', 'SNAP.Open'])
+```
+
+```{r}
+n <- exp(1)^(-1)
+
+learning <- function(learn_sequence){
+  maximum <- -Inf
+  for (i in learn_sequence){
+    if (i <  maximum){maximum <- i}
+  }
+  return(i)
+}
+
+
+golden_rule <- function(numbers){
+  test_quantity <- round(length(numbers)*n)
+  #print(paste("Quantity", test_quantity))
+  maximum <- learning(numbers[1:test_quantity])
+  last_n <- 0
+  for (i in numbers[test_quantity + 1:length(numbers)-1]){
+    if (!is.na(i)){
+    last_n <- i
+    if (i >=  maximum){return(i)}
+  }}
+  return(last_n)
+}
+```
+
+```{r}
+monthdatas<-new.env()
+
+c <- 0
+for (i in 2008:2018){
+  for (j in 1:12){
+    if (j >= 10){
+      m <- paste(toString(i),"-",toString(j), sep="")
+    }
+    else{
+      m <- paste(toString(i),"-0",toString(j), sep="")
+    }
+    month_data <- data <- MSFT[m, "MSFT.Open"]
+    #print(month_data)
+    # print(class(coredata(month_data)))
+    monthdatas[[toString(c)]] <- coredata(month_data)
+    c = c +1
+  }
+}
+print(monthdatas[['96']])
+```
+
+```{r}
+golden <- c()
+optimal <- c()
+month <- c()
+maximum <- c()
+pricespread <- c()
+
+counter <- 0
+print(length(monthdatas))
+#for (i in 2:24){
+for (i in 1:120){
+  #print(i)
+    counter <- counter + 1
+    crdata <- monthdatas[[toString(i)]]
+    #print(crdata)
+    golden[counter] <- golden_rule(crdata)
+    optimal[counter] <- min(crdata)
+    maximum[counter] <- max(crdata)
+    pricespread[counter] <- max(crdata) - min(crdata)
+    month[counter] <- i
+}
+
+
+difference <- c(maximum - golden)
+normdifferece <- c(difference / pricespread)
+month <- c(1:120)
+x <- c(maximum/golden)
+
+df <- data.frame(month, golden, optimal, maximum, difference, pricespread, normdifferece, x, month)
+df
+```
+```{r}
+plot(df$golden, xlab="Time Periods", ylab="Stock  Prices")
+lines(df$optimal, col="green")
+lines(df$maximum, col="red")
+
+
+cat("\nmean price span: ", min(pricespread))
+cat("\nmax price span: ",  max(pricespread))
+
+cat("\nmean difference: ", mean(difference))
+cat("\nmean difference normalized: ",  mean(normdifferece))
+cat("\n")
+mean <- mean(normdifferece)
+variance <- var(normdifferece)
+median(normdifferece)
+mean
+variance
+sum(normdifferece)/length(normdifferece)
+```
+```{r}
+p <- ggplot(data=df, aes(x=month, y=optimal)) +
+   geom_line(color="red", size=1)+
+   geom_line(aes(y=maximum),colour = "green")+
+   geom_point(aes(y=golden),  color="black")+ theme_light()
+p
+```
+

@@ -1,0 +1,8 @@
+"0","expected_maximum_sym <- function(p1, p2, n){"
+"0","  expected <- 0"
+"0","  for (q in 1:n){"
+"0","    expected <- expected + find_probability_sym(p1, p2, q, n)"
+"0","    "
+"0","  }"
+"0","  return(expected)"
+"0","}"

@@ -1,0 +1,68 @@
+"0","```r
+monthdatas<-new.env()
+c <- 0
+for (i in 2008:2017){
+  for (j in 1:12){
+    if (j >= 10){
+      m <- paste(toString(i),\"-\",toString(j), sep=\"\")
+    }
+    else{
+      m <- paste(toString(i),\"-0\",toString(j), sep=\"\")
+    }
+    month_data <- data <- AAPL[m, \"AAPL.Open\"]
+    #print(class(coredata(month_data)))
+    monthdatas[[toString(c)]] <- coredata(month_data)
+    c = c +1
+  }
+}
+#cat(\"c\", length(monthdatas))
+#print(monthdatas)
+#for (i in 0:c){
+#  print(monthdatas[[toString(i)]])
+#}
+  
+data <- AAPL[\"2017\"]$AAPL.Open
+estim_params <- function(monthly_data){
+  ups <- 1
+  downs <- 1
+  up.days <- 0
+  down.days <- 0
+  price_changes <- c()
+  
+  n <- length(monthly_data)
+  previous <-monthly_data[1]
+  #cat(\"len month\", n)
+  for (current in monthly_data[2:n]){
+    x <- (current)/previous
+    price_changes <- c(price_changes, x)
+    
+    if (0 < x & 1 > x) {
+      downs = downs * x
+      down.days = down.days + 1
+     
+    }
+    if (x > 1){
+      
+      ups = ups * x
+      up.days = up.days + 1
+    }
+    if (x == 1){
+      print(\"no price change\")
+      n = n - 1
+    }
+    previous = current
+  }
+  up <- ups ^ (1/up.days)
+  down <- downs ^ (1/down.days)
+  
+  p <- up.days / (n-1) # p to go up
+  
+  
+  print(price_changes)
+  print(mean(price_changes))
+  hist(price_changes)
+  plot(price_changes)
+  return(c(up, down, p, 1-p))
+} 
+plot(data)
+```"

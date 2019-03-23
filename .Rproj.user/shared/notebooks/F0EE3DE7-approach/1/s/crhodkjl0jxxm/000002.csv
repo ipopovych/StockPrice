@@ -1,0 +1,76 @@
+"0","```r
+```r
+get_max_vector <- function(monthdatas){
+  max.vector <- c()
+  min.vector <- c()
+  roma.vector <- c()
+  pricespread <- c()
+  vector_counter <- 1
+  
+  for (i in 1:length(monthdatas)-2){
+    data.previous <- monthdatas[[toString(i)]]
+    params <- estim_params(data.previous)
+  
+    current_month <-monthdatas[[toString(i+1)]]
+    n <- length(current_month)
+    start <- current_month[1]
+    
+    exp_mx <- accepting_value(start, params, n )
+    
+    max.vector[vector_counter] <- max(current_month)
+    min.vector[vector_counter] <- min(current_month)
+    pricespread[vector_counter] <- max(current_month) - min(current_month)
+    
+    if (max(current_month) < exp_mx){
+        roma.vector[vector_counter] = current_month[length(current_month)]
+        vector_counter= vector_counter +1
+    }
+  
+    for (price in current_month){
+      if (price >= exp_mx){
+        roma.vector[vector_counter] = price
+        vector_counter= vector_counter +1
+        break
+      }
+    }
+  }
+  difference <- c(max.vector - roma.vector)
+  normdifferece <- c(difference / pricespread)
+  month <- c(1:120)
+  x <- c(max.vector/roma.vector)
+  df <- data.frame(month, roma.vector, max.vector, min.vector, difference, normdifferece, x, pricespread)
+  return(df)
+}
+mx <- get_max_vector(monthdatas)
+```
+```"
+"1","NaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedfull precision may not have been achieved in 'gammafn'full precision may not have been achieved in 'gammafn'NaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedfull precision may not have been achieved in 'gammafn'full precision may not have been achieved in 'gammafn'NaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedfull precision may not have been achieved in 'gammafn'full precision may not have been achieved in 'gammafn'NaNs producedNaNs produced
+[1] \no price change\
+[1] \no price change\
+NaNs producedNaNs produced
+[1] \no price change\
+NaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedfull precision may not have been achieved in 'gammafn'full precision may not have been achieved in 'gammafn'
+[1] \no price change\
+NaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedNaNs producedfull precision may not have been achieved in 'gammafn'full precision may not have been achieved in 'gammafn'
+[1] \no price change\
+NaNs producedNaNs produced
+"
+"0","```r
+```r
+mx
+```
+```r
+print(length(mx$roma.vector))
+```
+```"
+"1","[1] 120
+"
+"0","```r
+```r
+plot(mx$roma.vector, xlab=\Time Periods\, ylab=\Stock  Prices\)
+lines(mx$max.vector, col=\red\)
+```
+```r
+lines(mx$min.vector, col=\green\)
+```
+```"

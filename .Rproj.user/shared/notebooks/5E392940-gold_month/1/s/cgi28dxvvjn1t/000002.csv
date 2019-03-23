@@ -1,0 +1,7 @@
+"0","```r
+p <- ggplot(data=df, aes(x=month, y=optimal)) +
+   geom_line(color=\"red\", size=1)+
+   geom_line(aes(y=maximum),colour = \"green\")+
+   geom_point(aes(y=golden),  color=\"black\")+ theme_light()
+p
+```"

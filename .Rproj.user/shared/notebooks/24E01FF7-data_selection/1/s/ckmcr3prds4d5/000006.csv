@@ -1,0 +1,6 @@
+"0","library(data.table)"
+"0","library(quantmod)"
+"0","start <- as.Date('2008-01-01')"
+"0","end <- as.Date('2018-01-01')"
+"0","data <- getSymbols(""MSFT"", src = ""yahoo"", from = start, to = end, env=NULL)$MSFT.Close"
+"0","names(data)[1]<-paste(""Price.Close"")"

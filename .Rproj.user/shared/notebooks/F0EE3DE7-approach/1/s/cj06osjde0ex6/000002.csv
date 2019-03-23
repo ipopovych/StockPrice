@@ -1,0 +1,14 @@
+"0","```r
+```r
+find_probability <- function(i, u, d, p, q, m, n){
+  gap <- floor((m - n*log(d))/log(u/d))
+  l <- m - (i * log(u/d) + n * (log(d) + 1))/2
+  if (! is.nan(i) & ! is.nan(gap)){
+    if (i >= gap){return ( p ^ i * q ^ (n - i) * comb(n, l))}
+    else {return(comb(n, i) * p ^ i * q ^ (n - i))}
+  }else {
+    return(0)
+  }
+}
+```
+```"

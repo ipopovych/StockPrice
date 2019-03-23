@@ -1,0 +1,20 @@
+"0","```r
+```r
+expected_maximum <- function(u, d, p, q, n){
+  mean <- 0
+  for (m in 1:n){
+    probability <- 0
+    for (success in 0:n){
+      p1 <- find_probability(success, u, d, p, q, (m + 1)* log(u), n)
+      p2 <- find_probability(success, u, d, p, q, m*log(u), n)
+      probability <- probability + p1 - p2
+    }
+    if (! is.nan(probability)){
+      mean <- mean + m*log(u)*probability
+    }
+  }
+  return(mean)
+  
+}
+```
+```"

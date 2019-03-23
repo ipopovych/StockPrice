@@ -1,0 +1,22 @@
+"0","```r
+n <- exp(1)^(-1)
+learning <- function(learn_sequence){
+  maximum <- -Inf
+  for (i in learn_sequence){
+    if (i <  maximum){maximum <- i}
+  }
+  return(i)
+}
+golden_rule <- function(numbers){
+  test_quantity <- round(length(numbers)*n)
+  #print(paste(\"Quantity\", test_quantity))
+  maximum <- learning(numbers[1:test_quantity])
+  last_n <- 0
+  for (i in numbers[test_quantity + 1:length(numbers)-1]){
+    if (!is.na(i)){
+    last_n <- i
+    if (i >=  maximum){return(i)}
+  }}
+  return(last_n)
+}
+```"

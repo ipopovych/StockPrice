@@ -1,0 +1,7 @@
+"0","```r
+```r
+accepting_value <- function(start, param, n){
+  return(start * param[1] ^ (expected_maximum(param[1], param[2], param[3], param[4], n)/log(param[1])))
+}
+```
+```"

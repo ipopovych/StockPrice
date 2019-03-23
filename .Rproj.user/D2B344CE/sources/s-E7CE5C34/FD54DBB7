@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1553260463664.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2411115210",
+    "id" : "FD54DBB7",
+    "lastKnownWriteTime" : 1553353162,
+    "last_content_update" : 1553353162845,
+    "path" : "D:/study/prob/StockPrice/main.Rmd",
+    "project_path" : "main.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "71,17",
+        "scrollLine" : "44",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

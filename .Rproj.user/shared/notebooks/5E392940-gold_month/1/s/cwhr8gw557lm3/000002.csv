@@ -1,0 +1,41 @@
+"0","```r
+monthdatas<-new.env()
+c <- 0
+for (i in 2008:2018){
+  for (j in 1:12){
+    if (j >= 10){
+      m <- paste(toString(i),\"-\",toString(j), sep=\"\")
+    }
+    else{
+      m <- paste(toString(i),\"-0\",toString(j), sep=\"\")
+    }
+    month_data <- data <- MSFT[m, \"MSFT.Open\"]
+    #print(month_data)
+    # print(class(coredata(month_data)))
+    monthdatas[[toString(c)]] <- coredata(month_data)
+    c = c +1
+  }
+}
+print(monthdatas[['96']])
+```"
+"1","      MSFT.Open
+ [1,]     54.32
+ [2,]     54.93
+ [3,]     54.32
+ [4,]     52.70
+ [5,]     52.37
+ [6,]     52.51
+ [7,]     52.76
+ [8,]     53.80
+ [9,]     52.00
+[10,]     51.31
+[11,]     51.48
+[12,]     49.98
+[13,]     51.00
+[14,]     51.41
+[15,]     51.94
+[16,]     51.79
+[17,]     52.01
+[18,]     51.86
+[19,]     54.73
+"

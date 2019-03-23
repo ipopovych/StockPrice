@@ -1,0 +1,31 @@
+"0","```r
+golden <- c()
+optimal <- c()
+month <- c()
+maximum <- c()
+pricespread <- c()
+counter <- 0
+print(length(monthdatas))
+```"
+"1","[1] 132
+"
+"0","```r
+#for (i in 2:24){
+for (i in 1:120){
+  #print(i)
+    counter <- counter + 1
+    crdata <- monthdatas[[toString(i)]]
+    #print(crdata)
+    golden[counter] <- golden_rule(crdata)
+    optimal[counter] <- min(crdata)
+    maximum[counter] <- max(crdata)
+    pricespread[counter] <- max(crdata) - min(crdata)
+    month[counter] <- i
+}
+difference <- c(maximum - golden)
+normdifferece <- c(difference / pricespread)
+month <- c(1:120)
+x <- c(maximum/golden)
+df <- data.frame(month, golden, optimal, maximum, difference, pricespread, normdifferece, x, month)
+df
+```"

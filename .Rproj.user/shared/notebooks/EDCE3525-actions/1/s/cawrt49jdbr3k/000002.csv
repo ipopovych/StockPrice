@@ -1,0 +1,21 @@
+"0","```r
+learning <- function(learn_sequence){
+  minimum <- Inf
+  for (i in learn_sequence){
+    if (i < minimum){minimum <- i}
+  }
+  return(i)
+}
+golden_rule <- function(numbers){
+  test_quantity <- round(length(numbers)*exp(1)^(-1))
+  print(paste(\"Quantity\", test_quantity))
+  minimum <- learning(numbers[1:test_quantity])
+  last_n <- 0
+  for (i in numbers[test_quantity + 1:length(numbers)-1]){
+    if (!is.na(i)){
+    last_n <- i
+    if (i < minimum){return(i)}
+  }}
+  return(last_n)
+}
+```"

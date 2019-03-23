@@ -1,0 +1,2 @@
+"0","splitted_3 <- split(data, f = ""months"", drop=FALSE, k = 3)"
+"0","#print(splitted_3)"

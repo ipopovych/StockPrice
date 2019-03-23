@@ -1,0 +1,18 @@
+---
+title: "R Notebook"
+output: html_notebook
+
+
+```{r}
+predict_period <- function(previous, current){
+params <- estim_params( previous[ (length(previous)/2) : length(previous)])
+print(params)
+}
+
+
+predict_period(coredata(splitted_3[[1]]), coredata(splitted_3[[2]]))
+
+#print(coredata(splitted_3[[1]]))
+#print(coredata(splitted_3[[1]])[1] - coredata(splitted_3[[1]])[2])
+```
+

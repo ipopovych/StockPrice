@@ -1,0 +1,7 @@
+"0","```r
+plot(df$golden)
+lines(df$optimal, col=\"blue\")
+```"
+"0","```r
+lines(df$maximum, col=\"red\")
+```"

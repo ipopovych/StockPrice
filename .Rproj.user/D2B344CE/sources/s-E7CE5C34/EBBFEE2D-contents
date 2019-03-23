@@ -1,0 +1,46 @@
+
+```{r}
+comb = function(n, x) {
+  return(factorial(n) / factorial(n-x) / factorial(x))
+}
+```
+
+
+
+```{r}
+find_probability_sym <- function(i, u, d, p, q, m, n){
+  gap <- floor((m + n)/2)
+  l <- m - 1/2 * i + n
+  if (! is.nan(i) & ! is.nan(gap)){
+    if (i >= gap){return ( p ^ i * q ^ (n - i) * comb(n, l))}
+    else {return(comb(n, i) * p ^ i * q ^ (n - i))}
+  }else {
+    return(0)
+  }
+}
+```
+
+
+```{r}
+expected_maximum_symmetric <- function(u, d, p, q, n){
+  
+  a = Sys.time()
+  mean <- 0
+  for (m in 1:n){
+    probability <- 0
+    for (success in m:n){
+      p2 <- find_probability_sym(success, u, d, p, q, m*u, n)
+      probability <- probability + p2
+    }
+    if (! is.nan(probability)){
+      mean <- mean + probability
+    }
+  }
+  print(paste("SYS", Sys.time() - a))
+  return(mean)}
+  
+```
+
+```{r}
+calculate <- function(u, d, p, q, start, n){
+  return(start*u^expected_maximum_symmetric(u, d, p, q, n))

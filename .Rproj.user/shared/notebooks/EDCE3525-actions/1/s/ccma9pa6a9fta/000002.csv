@@ -1,0 +1,113 @@
+"0","```r
+golden <- c()
+optimal <- c()
+year <- c()
+quarter <- c()
+maximum <- c()
+pricespread <- c()
+data <- split(AAPL, f = \"months\", drop=FALSE, k = 3)
+counter <- 0
+for (i in 2008:2017){
+  data <- AAPL[toString(i), \"AAPL.Open\"]
+  splitted <- split(data, f = \"months\", drop=FALSE, k = 3)
+  for (j in 1:4){
+    counter <- counter + 1
+    crdata <- coredata(splitted[[j]])
+    golden[counter] <- golden_rule(crdata)
+    optimal[counter] <- min(crdata)
+    maximum[counter] <- max(crdata)
+    pricespread[counter] <- max(crdata) - min(crdata)
+    year[counter] <- i
+    quarter[counter] <- j
+    print(paste(\"GOLD\", golden[j], \"OPT\", optimal[j]))
+  }
+  
+}
+```"
+"1","[1] \"Quantity 22\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 24\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 24\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 24\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 22\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 23\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 24\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 24\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 22\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 23\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 24\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 24\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 23\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 23\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 24\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 23\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 23\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 23\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 23\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 23\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 22\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 24\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 24\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 24\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 22\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 23\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 24\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 24\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 22\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 23\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 24\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 24\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 22\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 24\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 24\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 23\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+[1] \"Quantity 23\"
+[1] \"GOLD 19.172857 OPT 16.805714\"
+[1] \"Quantity 23\"
+[1] \"GOLD 25.608572 OPT 20.9\"
+[1] \"Quantity 23\"
+[1] \"GOLD 22.202858 OPT 15.464286\"
+[1] \"Quantity 23\"
+[1] \"GOLD 14.435715 OPT 11.704286\"
+"
+"0","```r
+difference <- c(golden-optimal)
+normdifferece <- c(difference / pricespread)
+df <- data.frame(year, quarter, golden, optimal, maximum, difference, pricespread, normdifferece)
+df
+```"

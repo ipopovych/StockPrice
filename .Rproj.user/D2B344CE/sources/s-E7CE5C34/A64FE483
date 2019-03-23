@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1553256018194.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1452638069",
+    "id" : "A64FE483",
+    "lastKnownWriteTime" : 1553268138,
+    "last_content_update" : 1553268138508,
+    "path" : "D:/study/prob/StockPrice/estimation.Rmd",
+    "project_path" : "estimation.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "91,3",
+        "scrollLine" : "59",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

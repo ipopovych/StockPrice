@@ -1,0 +1,56 @@
+"0","```r
+library(ggthemes)
+library(data.table)
+```"
+"1","data.table 1.11.4  Latest news: http://r-datatable.com
+"
+"0","```r
+library(quantmod)
+```"
+"1","Loading required package: xts
+Loading required package: zoo
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+
+Attaching package: ‘xts’
+
+The following objects are masked from ‘package:data.table’:
+
+    first, last
+
+Loading required package: TTR
+Version 0.4-0 included new data defaults. See ?getSymbols.
+Learn from a quantmod author: https://www.datacamp.com/courses/importing-and-managing-financial-data-in-r
+"
+"0","```r
+library(ggplot2)
+start <- as.Date('2008-01-01')
+end <- as.Date('2019-01-01')
+getSymbols(\"MSFT\", src = \"yahoo\", from = start, to = end)
+```"
+"1","‘getSymbols’ currently uses auto.assign=TRUE by default, but will
+use auto.assign=FALSE in 0.5-0. You will still be able to use
+‘loadSymbols’ to automatically load data. getOption(\"getSymbols.env\")
+and getOption(\"getSymbols.auto.assign\") will still be checked for
+alternate defaults.
+
+This message is shown once per session and may be disabled by setting 
+options(\"getSymbols.warning4.0\"=FALSE). See ?getSymbols for details.
+
+
+WARNING: There have been significant changes to Yahoo Finance data.
+Please see the Warning section of ‘?getSymbols.yahoo’ for details.
+
+This message is shown once per session and may be disabled by setting
+options(\"getSymbols.yahoo.warning\"=FALSE).
+"
+"1","[1] \"MSFT\"
+"
+"0","```r
+#print(SNAP['2017', 'SNAP.Open'])
+```"

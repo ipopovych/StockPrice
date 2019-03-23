@@ -1,0 +1,8 @@
+"0","```r
+```r
+ggplot(data=mx, aes(x=month, y=min.vector)) +
+   geom_line(color=\red\, size=1)+
+   geom_line(aes(y=max.vector),colour = \green\)+
+   geom_point(aes(y=roma.vector),  color=\black\)+ theme_light()
+```
+```"

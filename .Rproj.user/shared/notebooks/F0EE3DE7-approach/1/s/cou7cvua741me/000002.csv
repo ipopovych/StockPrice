@@ -1,0 +1,7 @@
+"0","```r
+```r
+comb = function(n, x) {
+  factorial(n) / factorial(n-x) / factorial(x)
+}
+```
+```"

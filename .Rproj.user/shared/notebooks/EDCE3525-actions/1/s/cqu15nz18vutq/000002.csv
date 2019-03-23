@@ -1,0 +1,11 @@
+"0","```r
+data <- AAPL[\"2009\"]
+#data
+#x <- as.numeric(data$AAPL.Open)
+#x
+#length(x)
+splitby3 <- split(data$AAPL.Open, f = \"months\", drop=FALSE, k = 3)
+min(coredata(splitby3[[1]]))
+```"
+"1","[1] 11.34143
+"

@@ -1,0 +1,3 @@
+"0","comb = function(n, x) {"
+"0","  return(factorial(n) / factorial(n-x) / factorial(x))"
+"0","}"

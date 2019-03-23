@@ -1,0 +1,7 @@
+"0","```r
+plot(df$golden, xlab=\"Time Periods\", ylab=\"Stock  Prices\")
+lines(df$optimal, col=\"green\")
+```"
+"0","```r
+lines(df$maximum, col=\"red\")
+```"
